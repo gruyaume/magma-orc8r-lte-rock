@@ -34,6 +34,6 @@ parts:
     source: https://github.com/magma/magma/
     source-type: git
     source-tag: v1.6.1
-    source-subdir: lte/cloud/
     organize:
-      configs: etc/magma/configs/lte/
+      lte/cloud/configs: etc/magma/configs/lte/
+      orc8r/cloud/configs: etc/magma/configs/orc8r/
