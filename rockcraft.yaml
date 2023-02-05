@@ -1,0 +1,39 @@
+name: magma-orc8r-lte
+summary: Magma Orchestrator LTE
+description: |
+  Magma Orchestrator LTE
+version: "1.6.1"
+license: Apache-2.0
+base: ubuntu:22.04
+platforms:
+  amd64:
+
+cmd: ["smsd", "-run_echo_server=true", "-logtostderr=true", "-v=0"]
+
+env:
+  - DATABASE_SOURCE: f"dbname=magma user=username password=password host=127.0.0.1 sslmode=disable"
+  - SQL_DRIVER: postgres
+  - SQL_DIALECT: psql
+  - SERVICE_HOSTNAME: magma-orc8r-smsd
+  - SERVICE_REGISTRY_MODE": k8s
+  - SERVICE_REGISTRY_NAMESPACE": namespace
+
+parts:
+
+  lte:
+    plugin: go
+    source: https://github.com/magma/magma/
+    source-type: git
+    source-tag: v1.6.1
+    source-subdir: lte/cloud/go
+    build-snaps:
+      - go
+
+  configs:
+    plugin: dump
+    source: https://github.com/magma/magma/
+    source-type: git
+    source-tag: v1.6.1
+    organize:
+      lte/cloud/configs: etc/magma/configs/lte/
+      orc8r/cloud/configs: etc/magma/configs/orc8r/
