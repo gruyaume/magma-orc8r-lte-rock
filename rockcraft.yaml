@@ -14,7 +14,7 @@ env:
   - DATABASE_SOURCE: f"dbname=magma user=username password=password host=127.0.0.1 sslmode=disable"
   - SQL_DRIVER: postgres
   - SQL_DIALECT: psql
-  - SERVICE_HOSTNAME: magma-orc8r-lte
+  - SERVICE_HOSTNAME: magma-orc8r-smsd
   - SERVICE_REGISTRY_MODE": k8s
   - SERVICE_REGISTRY_NAMESPACE": namespace
 
